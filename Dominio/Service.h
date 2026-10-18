@@ -17,7 +17,7 @@ class Service // Servicio del hospital
 
         string getName();
         void addPatient(Patient* p);
-        List<Patient*>& getPatients(); // Lista poor referencia
+        List<Patient*>& getPatients(); // Por referencia
         int patientsCount();
 
         ~Service();
