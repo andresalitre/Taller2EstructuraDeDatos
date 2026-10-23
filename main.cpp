@@ -303,7 +303,7 @@ void menu() // Menu principal
     string opcion = "0";
     do {
         cout << "=== HOSPITAL MARMAJA ===\n1. Atender pacientes\n2. Ver departamentos\n3. Buscar paciente\n4. Salir\n\nSeleccionar opcion: ";
-        getline(cin, opcion);
+        if (!getline(cin, opcion)) break;
 
         if (opcion == "1")
         {
