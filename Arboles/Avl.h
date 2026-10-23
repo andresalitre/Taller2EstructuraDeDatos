@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "NodoAVL.h"
+#include "NodoAvl.h"
 
 using namespace std;
 

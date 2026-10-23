@@ -1,4 +1,4 @@
-#include "AVL.h"
+#include "Avl.h"
 
 AVL::AVL() {
     raiz = nullptr;
