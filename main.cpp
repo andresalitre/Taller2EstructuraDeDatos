@@ -212,7 +212,23 @@ void atender() // Opcion 1
 
 void departamentos() // Opcion 2
 {
+    cout << "\n=== ESTADO DE LOS DEPARTAMENTOS ===\n" << endl;
 
+    for (int i = 0; i < servicios.size(); i++)
+    {
+        Service* s = servicios.get(i);
+        AVL& arbol = s->getPatients(); // AVL del servicio
+
+        cout << s->getName() << endl;
+
+        if (arbol.estaVacio())
+        {
+            cout << "Sin pacientes\n" << endl;
+            continue;
+        }
+
+        cout << "Pacientes: " << arbol.inorden() << "\n" << endl;
+    }
 }
 
 void buscarPaciente() // Opcion 3
