@@ -189,7 +189,7 @@ void atender() // Opcion 1
         Service* servicio = buscarServicio(nombreServicio);
 
         cout << "ID: " << p->getId() << "\nNombre: " << p->getName() << "\nEdad: " << p->getAge() << "\nTemperatura: "
-             << fixed << setprecision(1) << p->getTemperature() << defaultfloat
+             << fixed << setprecision(1) << p->getTemperature()
              << "\nDolor: " << p->getPain() << "\nTipoDolor: " << p->getPainType()
              << "\nTrauma: " << p->getTrauma() << "\nSintomasNeurologicos: " << p->getNeuroSymptoms()
              << "\nRequiereCirugia: " << p->getRequiresSurgery() << "\nDiasHospitalizacion: " << p->getHospitalDays() << "\n" << endl;
@@ -233,7 +233,55 @@ void departamentos() // Opcion 2
 
 void buscarPaciente() // Opcion 3
 {
+    string entrada;
 
+    cout << "\n=== BUSCAR PACIENTE ===\n" << endl;
+    cout << "Indique el ID o Nombre del paciente: ";
+    getline(cin, entrada);
+
+    cout << "\nBuscando en AVL...\n" << endl;
+
+    Patient* encontrado = nullptr;
+    Service* servicioEncontrado = nullptr;
+    string ruta;
+
+    for (int i = 0; i < servicios.size() && encontrado == nullptr; i++) // Primero se busca por ID
+    {
+        Service* s = servicios.get(i);
+        encontrado = s->getPatients().buscar(entrada, ruta);
+        if (encontrado != nullptr)
+        {
+            servicioEncontrado = s;
+        }
+    }
+
+    for (int i = 0; i < servicios.size() && encontrado == nullptr; i++) // Si no esta, se busca por nombre
+    {
+        Service* s = servicios.get(i);
+        encontrado = s->getPatients().buscarPorNombre(entrada);
+        if (encontrado != nullptr)
+        {
+            servicioEncontrado = s;
+            s->getPatients().buscar(encontrado->getId(), ruta); // Ruta para llegar al paciente por su ID
+        }
+    }
+
+    if (encontrado == nullptr)
+    {
+        cout << "Paciente no encontrado.\n" << endl;
+        return;
+    }
+
+    cout << "Paciente encontrado:\n-------" << endl;
+    cout << "ID: " << encontrado->getId() << "\nNombre: " << encontrado->getName() << "\nEdad: " << encontrado->getAge() << "\nDepartamento: " << servicioEncontrado->getName() << endl;
+
+    cout << "T: " << fixed << setprecision(1) << encontrado->getTemperature() << "° | D: " << encontrado->getPain() << " | TD: " << encontrado->getPainType() 
+    << " | T: " << (encontrado->getTrauma() == 1 ? "Si" : "No") << " | SN: " << (encontrado->getNeuroSymptoms() == 1 ? "Si" : "No") << " | RC: " << (encontrado->getRequiresSurgery() == 1 ? "Si" : "No") << " | DH: " 
+    << (encontrado->getHospitalDays() == 0 ? "Ninguno" : to_string(encontrado->getHospitalDays())) << endl;
+    
+    cout << "-------\n" << endl;
+
+    cout << "Ruta de busqueda:\n" << ruta << "\n" << endl;
 }
 
 void liberarMemoria() // Libera la cola y los servicios (cada servicio libera su AVL)
@@ -255,7 +303,7 @@ void menu() // Menu principal
     string opcion = "0";
     do {
         cout << "=== HOSPITAL MARMAJA ===\n1. Atender pacientes\n2. Ver departamentos\n3. Buscar paciente\n4. Salir\n\nSeleccionar opcion: ";
-        cin >> opcion;
+        getline(cin, opcion);
 
         if (opcion == "1")
         {
