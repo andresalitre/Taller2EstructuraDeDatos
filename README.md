@@ -21,7 +21,7 @@ Todo está desarrollado en C++ con estructuras implementadas manualmente (sin us
 Taller2EstructuraDeDatos/
 ├── main.cpp
 ├── pacientes.txt
-├── containers/
+├── Containers/
 │   ├── Node.h
 │   ├── List.h
 │   ├── Queue.h
@@ -31,8 +31,8 @@ Taller2EstructuraDeDatos/
 │   ├── Patient.h / Patient.cpp
 │   └── Service.h / Service.cpp
 └── Arboles/
-    ├── NodoAVL.h
-    ├── AVL.h / AVL.cpp
+    ├── NodoAvl.h
+    ├── Avl.h / Avl.cpp
     ├── NodoDecision.h
     └── ArbolDecision.h / ArbolDecision.cpp
 ```
@@ -44,7 +44,7 @@ Linux / Codespace:
 ```bash
 git clone https://github.com/andresalitre/Taller2EstructuraDeDatos
 cd Taller2EstructuraDeDatos
-g++ -std=c++17 main.cpp Dominio/Person.cpp Dominio/Patient.cpp Dominio/Service.cpp Arboles/AVL.cpp Arboles/ArbolDecision.cpp -o main
+g++ -std=c++17 main.cpp Dominio/Person.cpp Dominio/Patient.cpp Dominio/Service.cpp Arboles/Avl.cpp Arboles/ArbolDecision.cpp -o main
 ./main
 ```
 
@@ -53,7 +53,7 @@ Windows (PowerShell):
 ```powershell
 git clone https://github.com/andresalitre/Taller2EstructuraDeDatos
 cd Taller2EstructuraDeDatos
-g++ -std=c++17 main.cpp Dominio/Person.cpp Dominio/Patient.cpp Dominio/Service.cpp Arboles/AVL.cpp Arboles/ArbolDecision.cpp -o main.exe
+g++ -std=c++17 main.cpp Dominio/Person.cpp Dominio/Patient.cpp Dominio/Service.cpp Arboles/Avl.cpp Arboles/ArbolDecision.cpp -o main.exe
 .\main.exe
 ```
 
