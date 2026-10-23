@@ -2,7 +2,7 @@
 
 #include <string>
 #include "Patient.h"
-#include "../Arboles/AVL.h"
+#include "../Arboles/Avl.h"
 
 using namespace std;
 
